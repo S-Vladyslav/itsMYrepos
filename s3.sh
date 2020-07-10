@@ -1,7 +1,6 @@
 #! /bin/bash
 pw=`pwd`
 echo "$pw/s3.sh"
-#59 23 * * 5 $pw/s3.sh
 
 crontab -l > foocron
 echo "59 23 * * 5 rm -rf $pw/s3.sh" >> foocron
