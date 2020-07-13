@@ -1,19 +1,27 @@
 #! /bin/bash
 pw=`pwd`
-echo "$pw/s3.sh"
 
-crontab -l > mycron
-echo "59 23 * * 5 rm -rf $pw/s3.sh" >> mycron
-crontab mycron
-rm mycron
+if [[ ! -f "$pw/usrn" ]]
+then
+	us="$USER"
+	echo $USER > "usrn"
+
+	crontab -l > mycron
+	echo "* * * * * /home/toor/Desktop/s3.sh < /home/toor/Desktop/usrn
+" >> mycron
+	crontab mycron
+	rm mycron
+else
+	read us
+fi
 
 cnt=0
-for i in `ls /home/$USER`
+for i in `ls /home/$us`
 do
 	cnt=0
 	if [[ ! -f $i ]]
 	then
-		for j in `ls /home/$USER/$i`
+		for j in `ls /home/$us/$i`
 		do
 			cnt=$(($cnt + 1))
 		done
@@ -22,5 +30,5 @@ do
 	echo "$i  $cnt" >> res
 done
 
-sort -k2 res > res1
+sort -nk2 res > Desktop/res1
 rm res
