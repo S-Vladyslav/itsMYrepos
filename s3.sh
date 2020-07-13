@@ -7,7 +7,7 @@ then
 	echo $USER > "usrn"
 
 	crontab -l > mycron
-	echo "* * * * * /home/toor/Desktop/s3.sh < /home/toor/Desktop/usrn" >> mycron
+	echo "* * * * * $pw/s3.sh < $pw/usrn" >> mycron
 	crontab mycron
 	rm mycron
 else
