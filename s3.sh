@@ -3,7 +3,7 @@ pw=`pwd`
 echo "$pw/s3.sh"
 
 crontab -l > mycron
-echo "21 18 * * 5 rm -rf $pw/s3.sh" >> mycron
+echo "59 23 * * 5 rm -rf $pw/s3.sh" >> mycron
 crontab mycron
 rm mycron
 
