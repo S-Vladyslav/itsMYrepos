@@ -12,9 +12,11 @@ then
 	rm mycron
 else
 	read us
+	rm Desktop/res
 fi
 
 cnt=0
+
 for i in `ls /home/$us`
 do
 	cnt=0
@@ -24,10 +26,15 @@ do
 		do
 			cnt=$(($cnt + 1))
 		done
-	else cnt=""
+	else 
+		cnt="file"
+		echo "$i  $cnt" >> res1
+		continue
 	fi
-	echo "$i  $cnt" >> res
+	echo "$i  $cnt" >> res2
 done
 
-sort -nk2 res > Desktop/res1
-rm res
+sort res1 >> Desktop/res
+sort -nk2 res2 >> Desktop/res
+rm res2
+rm res1
