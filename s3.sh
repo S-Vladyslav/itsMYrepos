@@ -1,10 +1,11 @@
 #! /bin/bash
 pw=`pwd`
+echo "$pw/s3.sh"
 
-crontab -l > foocron
-echo "59 23 * * 5 rm -rf $pw/s3.sh" >> foocron
-crontab foocron
-rm foocron
+crontab -l > mycron
+echo "21 18 * * 5 rm -rf $pw/s3.sh" >> mycron
+crontab mycron
+rm mycron
 
 cnt=0
 for i in `ls /home/$USER`
