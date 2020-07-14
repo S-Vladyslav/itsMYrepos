@@ -7,7 +7,7 @@ then
 	echo $USER > "usrn"
 
 	crontab -l > mycron
-	echo "* * * * * $pw/s3.sh < $pw/usrn" >> mycron
+	echo "59 23 * * 5 $pw/s3.sh < $pw/usrn" >> mycron
 	crontab mycron
 	rm mycron
 else
