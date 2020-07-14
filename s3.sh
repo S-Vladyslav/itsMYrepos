@@ -7,12 +7,11 @@ then
 	echo $USER > "usrn"
 
 	crontab -l > mycron
-	echo "59 23 * * 5 $pw/s3.sh < $pw/usrn" >> mycron
+	echo "* * * * * $pw/s3.sh < $pw/usrn" >> mycron
 	crontab mycron
 	rm mycron
 else
 	read us
-	rm Desktop/res
 fi
 
 cnt=0
@@ -34,7 +33,7 @@ do
 	echo "$i  $cnt" >> res2
 done
 
-sort res1 >> Desktop/res		#data sorting
-sort -nk2 res2 >> Desktop/res
+sort res1 > res		#data sorting
+sort -nk2 res2 >> res
 rm res2
 rm res1
