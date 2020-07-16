@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# BACKUP SCRIPT
+
+
 cd ~
 
 if [[ ! -f "backup" ]]
